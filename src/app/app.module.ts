@@ -7,13 +7,17 @@ import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 import { HeaderComponent } from './header/header.component';
 import {FormsModule} from '@angular/forms';
+import { UpdateUserComponent } from './update-user/update-user.component';
+import { ShowUserComponent } from './show-user/show-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     UserComponent,
-    HeaderComponent
+    HeaderComponent,
+    UpdateUserComponent,
+    ShowUserComponent
   ],
   imports: [
     BrowserModule,

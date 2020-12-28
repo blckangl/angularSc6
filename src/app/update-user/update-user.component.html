@@ -1,0 +1,11 @@
+<form (ngSubmit)="updateUser(form)" #form="ngForm">
+  <div>
+    <label for="username">User Name</label>
+    <input type="text" id="username" name="username" [value]="currentUser.name" ngModel required>
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" [value]="currentUser.email" ngModel required email>
+  </div>
+  <button [disabled]="!form.valid">Submit</button>
+</form>
