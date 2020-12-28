@@ -2,7 +2,8 @@
   <div class="container">
     <a routerLink="">Home</a>
     <a [routerLink]="['user','4']">User</a>
-    <button>Activate User</button>
+    <button *ngIf="toggleValue" (click)="toggleActivateUser()">Activate User</button>
+    <button *ngIf="!toggleValue" (click)="toggleActivateUser()">Deactivate User</button>
 
   </div>
 </section>

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-user',
@@ -8,7 +9,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class UserComponent implements OnInit {
 
-  constructor(private router: ActivatedRoute) {
+  constructor(private router: ActivatedRoute, private userService: UserService) {
   }
 
   id: string;
@@ -17,6 +18,10 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
     this.router.params.subscribe((param) => {
       this.id = param.id;
+    });
+
+    this.userService.isActiveSubject.subscribe((state) => {
+      this.isActivated = state;
     });
   }
 

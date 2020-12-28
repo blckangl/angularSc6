@@ -2,3 +2,17 @@
 
 <input type="text" [(ngModel)]="numberInput">
 <button (click)="updateCurrentNumber()">Update</button>
+
+<form (ngSubmit)="onSubmit()" #form="ngForm">
+  <div>
+    <label for="username">User Name:</label>
+    <input name="username" id="username" type="text" ngModel required>
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input name="email" id="email" type="email" ngModel required email #emailInput="ngModel" >
+    <small *ngIf="!emailInput.valid && emailInput.touched">Email incorrect</small>
+  </div>
+
+  <button type="submit" [disabled]="!form.valid">Submit</button>
+</form>

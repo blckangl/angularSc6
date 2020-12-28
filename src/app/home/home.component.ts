@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {observable, Observable, Subject} from 'rxjs';
 import {error} from '@angular/compiler/src/util';
 import {filter, map} from 'rxjs/operators';
+import {Form, NgModel} from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +10,8 @@ import {filter, map} from 'rxjs/operators';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
+  @ViewChild('form') form: Form;
   customObservable: Observable<any>;
   numberSubject = new Subject<number>();
   numberInput = 5;
@@ -34,16 +37,16 @@ export class HomeComponent implements OnInit {
       }, 1000);
     });
 
-    this.customObservable.pipe(filter((data) => {
-      return data % 2 === 0;
-    })).subscribe((couter) => {
-      console.log('custom count:', couter);
-    }, (error) => {
-      console.log(error);
-    }, () => {
-      console.log('completed ');
-    });
-    ;
+    // this.customObservable.pipe(filter((data) => {
+    //   return data % 2 === 0;
+    // })).subscribe((couter) => {
+    //   console.log('custom count:', couter);
+    // }, (error) => {
+    //   console.log(error);
+    // }, () => {
+    //   console.log('completed ');
+    // });
+    // ;
 
     this.numberSubject.subscribe((data) => {
       this.currentNumber = data;
@@ -55,5 +58,9 @@ export class HomeComponent implements OnInit {
 
   updateCurrentNumber() {
     this.numberSubject.next(this.numberInput);
+  }
+
+  onSubmit() {
+    console.log(this.form);
   }
 }
